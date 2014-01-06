@@ -102,7 +102,7 @@ mate-doc-prepare --copy --force
 	--with-html-dir=%{_gtkdocdir}
 
 # this package uses shave, not AM_SILENT_RULES, thus only V=1 works
-%{__make} \
+%{__make} -j1 \
 	V=1
 
 %install
