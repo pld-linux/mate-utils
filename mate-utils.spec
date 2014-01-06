@@ -2,7 +2,7 @@ Summary:	MATE utility programs
 Summary(pl.UTF-8):	Programy użytkowe dla środowiska MATE
 Name:		mate-utils
 Version:	1.6.0
-Release:	1
+Release:	2
 License:	LGPL v2+ (libmatedict), GPL v2+ (programs), FDL (documentation)
 Group:		X11/Applications/Multimedia
 Source0:	http://pub.mate-desktop.org/releases/1.6/%{name}-%{version}.tar.xz
@@ -32,6 +32,7 @@ Requires(post,postun):	gtk-update-icon-cache
 Requires:	glib2 >= 1:2.26.0
 Requires:	gtk+2 >= 2:2.20.0
 Requires:	libcanberra-gtk >= 0.4
+Requires:	libmatedict = %{version}-%{release}
 Requires:	mate-icon-theme
 Requires:	mate-panel >= 1.5.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
