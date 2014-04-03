@@ -2,7 +2,7 @@ Summary:	MATE utility programs
 Summary(pl.UTF-8):	Programy użytkowe dla środowiska MATE
 Name:		mate-utils
 Version:	1.8.0
-Release:	1
+Release:	2
 License:	LGPL v2+ (libmatedict), GPL v2+ (programs), FDL (documentation)
 Group:		X11/Applications/Multimedia
 Source0:	http://pub.mate-desktop.org/releases/1.8/%{name}-%{version}.tar.xz
@@ -64,9 +64,9 @@ Summary:	Header files for libmatedict library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libmatedict
 License:	LGPL v2+
 Group:		X11/Development/Libraries
-Requires:	libmatedict = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.20.0
 Requires:	gtk+2-devel >= 2:2.20.0
+Requires:	libmatedict = %{version}-%{release}
 
 %description -n libmatedict-devel
 Header files for libmatedict library.
@@ -78,6 +78,9 @@ Pliki nagłówkowe biblioteki libmatedict.
 Summary:	API documentation for libmatedict library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki libmatedict
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description -n libmatedict-apidocs
 API documentation for libmatedict library.
