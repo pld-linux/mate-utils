@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_with	gtk3		# use GTK+ 3.x instead of 2.x
+
 Summary:	MATE utility programs
 Summary(pl.UTF-8):	Programy użytkowe dla środowiska MATE
 Name:		mate-utils
@@ -12,15 +16,16 @@ BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	glib2-devel >= 1:2.26.0
-BuildRequires:	gtk+2-devel >= 2:2.20.0
+%{!?with_gtk3:BuildRequires:	gtk+2-devel >= 2:2.24.0}
+%{?with_gtk3:BuildRequires:	gtk+3-devel >= 3.0.0}
 BuildRequires:	gtk-doc >= 1.10
 BuildRequires:	intltool >= 0.40.0
-BuildRequires:	libcanberra-gtk-devel >= 0.4
+%{!?with_gtk3:BuildRequires:	libcanberra-gtk-devel >= 0.4}
+%{?with_gtk3:BuildRequires:	libcanberra-gtk3-devel >= 0.4}
 BuildRequires:	libgtop-devel >= 1:2.12.0
 BuildRequires:	libtool >= 1:1.4.3
 BuildRequires:	mate-common
-BuildRequires:	mate-panel-devel >= 1.5.0
-BuildRequires:	rarian-compat
+BuildRequires:	mate-panel-devel >= 1.8.0
 BuildRequires:	rpmbuild(find_lang) >= 1.36
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
@@ -30,9 +35,11 @@ Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	glib2 >= 1:2.26.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	glib2 >= 1:2.26.0
-Requires:	gtk+2 >= 2:2.20.0
+%{!?with_gtk3:Requires:	gtk+2 >= 2:2.24.0}
+%{?with_gtk3:Requires:	gtk+3 >= 3.0.0}
 Requires:	hicolor-icon-theme
-Requires:	libcanberra-gtk >= 0.4
+%{!?with_gtk3:Requires:	libcanberra-gtk >= 0.4}
+%{?with_gtk3:Requires:	libcanberra-gtk3 >= 0.4}
 Requires:	libmatedict = %{version}-%{release}
 Requires:	mate-panel >= 1.8.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -51,7 +58,8 @@ Summary(pl.UTF-8):	Biblioteka kliencka protokołu słownika MATE
 License:	LGPL v2+
 Group:		X11/Libraries
 Requires:	glib2 >= 1:2.20.0
-Requires:	gtk+2 >= 2:2.20.0
+%{!?with_gtk3:Requires:	gtk+2 >= 2:2.24.0}
+%{?with_gtk3:Requires:	gtk+3 >= 3.0.0}
 
 %description -n libmatedict
 MATE Dictionary Protocol client library.
@@ -65,7 +73,8 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libmatedict
 License:	LGPL v2+
 Group:		X11/Development/Libraries
 Requires:	glib2-devel >= 1:2.20.0
-Requires:	gtk+2-devel >= 2:2.20.0
+%{!?with_gtk3:Requires:	gtk+2 >= 2:2.24.0}
+%{?with_gtk3:Requires:	gtk+3 >= 3.0.0}
 Requires:	libmatedict = %{version}-%{release}
 
 %description -n libmatedict-devel
@@ -116,6 +125,7 @@ Pozwala na zrobienie zrzutu ekranu biurka.
 %configure \
 	--enable-gtk-doc \
 	--disable-static \
+	%{?with_gtk3:--with-gtk=3.0} \
 	--with-html-dir=%{_gtkdocdir}
 
 # this package uses shave, not AM_SILENT_RULES, thus only V=1 works
@@ -129,13 +139,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libmatedict.la
 
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/cmn
-
 # mate < 1.5 did not exist in pld, avoid dependency on mate-conf
 %{__rm} $RPM_BUILD_ROOT%{_datadir}/MateConf/gsettings/mate-*.convert
 
-# mate-utils gettext domain, mate-{dictionary,disk-usage,analyzer,search-tool,system-log} mate,omf dirs
-%find_lang %{name} --with-mate --with-omf --all-name
+# mate-utils gettext domain, mate-{dictionary,disk-usage,analyzer,search-tool,system-log} mate dirs
+%find_lang %{name} --with-mate --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
