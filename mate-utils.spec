@@ -106,10 +106,10 @@ Requires:	glib2 >= 1:2.36.0
 Conflicts:	mate-utils < 1.8.0-2.1
 
 %description -n mate-screenshot
-Allows to make a desktop screenshot.
+This utility allows to make a desktop screenshot.
 
 %description -n mate-screenshot -l pl.UTF-8
-Pozwala na zrobienie zrzutu ekranu biurka.
+To narzędzie pozwala na zrobienie zrzutu ekranu biurka.
 
 %prep
 %setup -q
