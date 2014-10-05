@@ -220,4 +220,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/glib-2.0/schemas/org.mate.screenshot.gschema.xml
 %{_datadir}/mate-screenshot
 %{_desktopdir}/mate-screenshot.desktop
+%{_mandir}/man1/mate-panel-screenshot.1*
 %{_mandir}/man1/mate-screenshot.1*
