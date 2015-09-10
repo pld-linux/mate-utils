@@ -5,12 +5,12 @@
 Summary:	MATE utility programs
 Summary(pl.UTF-8):	Programy użytkowe dla środowiska MATE
 Name:		mate-utils
-Version:	1.10.2
+Version:	1.10.3
 Release:	1
 License:	LGPL v2+ (libmatedict), GPL v2+ (programs), FDL (documentation)
 Group:		X11/Applications/Multimedia
 Source0:	http://pub.mate-desktop.org/releases/1.10/%{name}-%{version}.tar.xz
-# Source0-md5:	5c888cd0c183229bc595e9683d91420c
+# Source0-md5:	3c15f1607b9289adf3f3d9cff857b8e6
 URL:		https://github.com/mate-desktop/mate-utils
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.9
@@ -131,9 +131,7 @@ To narzędzie pozwala na zrobienie zrzutu ekranu biurka.
 	%{?with_gtk3:--with-gtk=3.0} \
 	--with-html-dir=%{_gtkdocdir}
 
-# this package uses shave, not AM_SILENT_RULES, thus only V=1 works
-%{__make} -j1 \
-	V=1
+%{__make} -j1
 
 %install
 rm -rf $RPM_BUILD_ROOT
