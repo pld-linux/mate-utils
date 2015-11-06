@@ -5,21 +5,21 @@
 Summary:	MATE utility programs
 Summary(pl.UTF-8):	Programy użytkowe dla środowiska MATE
 Name:		mate-utils
-Version:	1.10.3
+Version:	1.12.0
 Release:	1
 License:	LGPL v2+ (libmatedict), GPL v2+ (programs), FDL (documentation)
 Group:		X11/Applications/Multimedia
-Source0:	http://pub.mate-desktop.org/releases/1.10/%{name}-%{version}.tar.xz
-# Source0-md5:	3c15f1607b9289adf3f3d9cff857b8e6
+Source0:	http://pub.mate-desktop.org/releases/1.12/%{name}-%{version}.tar.xz
+# Source0-md5:	07e7ff6731241d1e0cea147e35e49843
 URL:		https://github.com/mate-desktop/mate-utils
 BuildRequires:	autoconf >= 2.53
-BuildRequires:	automake >= 1:1.9
+BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	glib2-devel >= 1:2.36.0
 %{!?with_gtk3:BuildRequires:	gtk+2-devel >= 2:2.24.0}
 %{?with_gtk3:BuildRequires:	gtk+3-devel >= 3.0.0}
 BuildRequires:	gtk-doc >= 1.10
-BuildRequires:	intltool >= 0.40.0
+BuildRequires:	intltool >= 0.50.1
 %{!?with_gtk3:BuildRequires:	libcanberra-gtk-devel >= 0.4}
 %{?with_gtk3:BuildRequires:	libcanberra-gtk3-devel >= 0.4}
 BuildRequires:	libgtop-devel >= 1:2.12.0
@@ -196,6 +196,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/mate-search-tool.desktop
 %{_desktopdir}/mate-system-log.desktop
 %{_iconsdir}/hicolor/*/apps/mate-disk-usage-analyzer.*
+%{_iconsdir}/hicolor/*/apps/mate-system-log.png
+%{_iconsdir}/hicolor/scalable/apps/mate-system-log-symbolic.svg
 %{_pixmapsdir}/mate-search-tool
 %{_mandir}/man1/mate-dictionary.1*
 %{_mandir}/man1/mate-disk-usage-analyzer.1*
