@@ -42,6 +42,7 @@ Requires:	glib2 >= 1:2.36.0
 Requires:	hicolor-icon-theme
 %{!?with_gtk3:Requires:	libcanberra-gtk >= 0.4}
 %{?with_gtk3:Requires:	libcanberra-gtk3 >= 0.4}
+Requires:	libgtop-devel >= 1:2.12.0
 Requires:	libmatedict = %{version}-%{release}
 Requires:	mate-panel >= 1.8.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
