@@ -1,31 +1,25 @@
-#
-# Conditional build:
-%bcond_with	gtk3		# use GTK+ 3.x instead of 2.x
-
 Summary:	MATE utility programs
 Summary(pl.UTF-8):	Programy użytkowe dla środowiska MATE
 Name:		mate-utils
-Version:	1.16.0
+Version:	1.18.0
 Release:	1
 License:	LGPL v2+ (libmatedict), GPL v2+ (programs), FDL (documentation)
 Group:		X11/Applications/Multimedia
-Source0:	http://pub.mate-desktop.org/releases/1.16/%{name}-%{version}.tar.xz
-# Source0-md5:	530d2464098e815e3bd15ae3d52ba934
+Source0:	http://pub.mate-desktop.org/releases/1.18/%{name}-%{version}.tar.xz
+# Source0-md5:	0ba5c416e59338f633ac3a7d092823bd
 URL:		https://github.com/mate-desktop/mate-utils
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	glib2-devel >= 1:2.36.0
-%{!?with_gtk3:BuildRequires:	gtk+2-devel >= 2:2.24.0}
-%{?with_gtk3:BuildRequires:	gtk+3-devel >= 3.0.0}
+BuildRequires:	gtk+3-devel >= 3.14
 BuildRequires:	gtk-doc >= 1.10
 BuildRequires:	intltool >= 0.50.1
-%{!?with_gtk3:BuildRequires:	libcanberra-gtk-devel >= 0.4}
-%{?with_gtk3:BuildRequires:	libcanberra-gtk3-devel >= 0.4}
+BuildRequires:	libcanberra-gtk3-devel >= 0.4
 BuildRequires:	libgtop-devel >= 1:2.12.0
 BuildRequires:	libtool >= 1:1.4.3
 BuildRequires:	mate-common
-BuildRequires:	mate-panel-devel >= 1.8.0
+BuildRequires:	mate-panel-devel >= 1.17.0
 BuildRequires:	rpmbuild(find_lang) >= 1.36
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libX11-devel
@@ -37,14 +31,12 @@ Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	glib2 >= 1:2.36.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	glib2 >= 1:2.36.0
-%{!?with_gtk3:Requires:	gtk+2 >= 2:2.24.0}
-%{?with_gtk3:Requires:	gtk+3 >= 3.0.0}
+Requires:	gtk+3 >= 3.14
 Requires:	hicolor-icon-theme
-%{!?with_gtk3:Requires:	libcanberra-gtk >= 0.4}
-%{?with_gtk3:Requires:	libcanberra-gtk3 >= 0.4}
+Requires:	libcanberra-gtk3 >= 0.4
 Requires:	libgtop >= 1:2.12.0
 Requires:	libmatedict = %{version}-%{release}
-Requires:	mate-panel >= 1.8.0
+Requires:	mate-panel >= 1.17.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_libexecdir	%{_libdir}/mate-panel
@@ -61,8 +53,7 @@ Summary(pl.UTF-8):	Biblioteka kliencka protokołu słownika MATE
 License:	LGPL v2+
 Group:		X11/Libraries
 Requires:	glib2 >= 1:2.36.0
-%{!?with_gtk3:Requires:	gtk+2 >= 2:2.24.0}
-%{?with_gtk3:Requires:	gtk+3 >= 3.0.0}
+Requires:	gtk+3 >= 3.14
 
 %description -n libmatedict
 MATE Dictionary Protocol client library.
@@ -76,8 +67,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libmatedict
 License:	LGPL v2+
 Group:		X11/Development/Libraries
 Requires:	glib2-devel >= 1:2.36.0
-%{!?with_gtk3:Requires:	gtk+2 >= 2:2.24.0}
-%{?with_gtk3:Requires:	gtk+3 >= 3.0.0}
+Requires:	gtk+3 >= 3.14
 Requires:	libmatedict = %{version}-%{release}
 
 %description -n libmatedict-devel
@@ -129,7 +119,6 @@ To narzędzie pozwala na zrobienie zrzutu ekranu biurka.
 	--enable-gtk-doc \
 	--disable-silent-rules \
 	--disable-static \
-	%{?with_gtk3:--with-gtk=3.0} \
 	--with-html-dir=%{_gtkdocdir}
 
 %{__make} -j1
