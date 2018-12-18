@@ -2,7 +2,7 @@ Summary:	MATE utility programs
 Summary(pl.UTF-8):	Programy użytkowe dla środowiska MATE
 Name:		mate-utils
 Version:	1.20.1
-Release:	1
+Release:	2
 License:	LGPL v2+ (libmatedict), GPL v2+ (programs), FDL (documentation)
 Group:		X11/Applications/Multimedia
 Source0:	http://pub.mate-desktop.org/releases/1.20/%{name}-%{version}.tar.xz
@@ -39,7 +39,9 @@ Requires:	libmatedict = %{version}-%{release}
 Requires:	mate-panel >= 1.17.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_libexecdir	%{_libdir}/mate-panel
+# use the same libexecdir as mate-panel
+# (better solution: store mate-panel libexecdir in libmatepanelapplet-*.pc and read it here)
+%define		matepanel_libexecdir	%{_libexecdir}/mate-panel
 
 %description
 MATE utility programs.
@@ -116,6 +118,7 @@ To narzędzie pozwala na zrobienie zrzutu ekranu biurka.
 %{__autoheader}
 %{__automake}
 %configure \
+	--libexecdir=%{matepanel_libexecdir} \
 	--enable-gtk-doc \
 	--disable-silent-rules \
 	--disable-static \
@@ -166,7 +169,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/mate-disk-usage-analyzer
 %attr(755,root,root) %{_bindir}/mate-search-tool
 %attr(755,root,root) %{_bindir}/mate-system-log
-%attr(755,root,root) %{_libexecdir}/mate-dictionary-applet
+%attr(755,root,root) %{matepanel_libexecdir}/mate-dictionary-applet
 %{_datadir}/appdata/mate-dictionary.appdata.xml
 %{_datadir}/appdata/mate-disk-usage-analyzer.appdata.xml
 %{_datadir}/appdata/mate-search-tool.appdata.xml
