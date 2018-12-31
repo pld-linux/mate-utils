@@ -2,7 +2,7 @@ Summary:	MATE utility programs
 Summary(pl.UTF-8):	Programy użytkowe dla środowiska MATE
 Name:		mate-utils
 Version:	1.20.2
-Release:	1
+Release:	2
 License:	LGPL v2+ (libmatedict), GPL v2+ (programs), FDL (documentation)
 Group:		X11/Applications/Multimedia
 Source0:	http://pub.mate-desktop.org/releases/1.20/%{name}-%{version}.tar.xz
