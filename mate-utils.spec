@@ -110,13 +110,6 @@ To narzędzie pozwala na zrobienie zrzutu ekranu biurka.
 %setup -q
 
 %build
-%{__gtkdocize}
-%{__intltoolize}
-%{__libtoolize}
-%{__aclocal} -I m4
-%{__autoconf}
-%{__autoheader}
-%{__automake}
 %configure \
 	--libexecdir=%{matepanel_libexecdir} \
 	--enable-gtk-doc \
