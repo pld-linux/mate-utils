@@ -109,6 +109,9 @@ To narzędzie pozwala na zrobienie zrzutu ekranu biurka.
 %prep
 %setup -q
 
+# itstool saegfaults parsing this
+%{__rm} -r gsearchtool/help/pt
+
 %build
 %configure \
 	--libexecdir=%{matepanel_libexecdir} \
