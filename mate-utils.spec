@@ -1,16 +1,16 @@
 Summary:	MATE utility programs
 Summary(pl.UTF-8):	Programy użytkowe dla środowiska MATE
 Name:		mate-utils
-Version:	1.20.2
-Release:	2
+Version:	1.22.0
+Release:	1
 License:	LGPL v2+ (libmatedict), GPL v2+ (programs), FDL (documentation)
 Group:		X11/Applications/Multimedia
-Source0:	http://pub.mate-desktop.org/releases/1.20/%{name}-%{version}.tar.xz
-# Source0-md5:	20a6e2e3ebede56a49e0765af281f595
+Source0:	http://pub.mate-desktop.org/releases/1.22/%{name}-%{version}.tar.xz
+# Source0-md5:	84bd305a9a054e70df165d9b65cc1d13
 URL:		https://github.com/mate-desktop/mate-utils
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.11
-BuildRequires:	docbook-dtd412-xml
+BuildRequires:	docbook-dtd45-xml
 BuildRequires:	glib2-devel >= 1:2.50.0
 BuildRequires:	gtk+3-devel >= 3.22
 BuildRequires:	gtk-doc >= 1.10
@@ -167,9 +167,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/mate-search-tool
 %attr(755,root,root) %{_bindir}/mate-system-log
 %attr(755,root,root) %{matepanel_libexecdir}/mate-dictionary-applet
-%{_datadir}/appdata/mate-dictionary.appdata.xml
-%{_datadir}/appdata/mate-disk-usage-analyzer.appdata.xml
-%{_datadir}/appdata/mate-search-tool.appdata.xml
+%{_datadir}/metainfo/mate-dictionary.appdata.xml
+%{_datadir}/metainfo/mate-disk-usage-analyzer.appdata.xml
+%{_datadir}/metainfo/mate-search-tool.appdata.xml
 %{_datadir}/dbus-1/services/org.mate.panel.applet.DictionaryAppletFactory.service
 %{_datadir}/glib-2.0/schemas/org.mate.dictionary.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.disk-usage-analyzer.gschema.xml
@@ -212,7 +212,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/mate-panel-screenshot
 %attr(755,root,root) %{_bindir}/mate-screenshot
-%{_datadir}/appdata/mate-screenshot.appdata.xml
+%{_datadir}/metainfo/mate-screenshot.appdata.xml
 %{_datadir}/glib-2.0/schemas/org.mate.screenshot.gschema.xml
 %{_datadir}/mate-screenshot
 %{_desktopdir}/mate-screenshot.desktop
