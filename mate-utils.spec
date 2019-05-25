@@ -11,6 +11,7 @@ URL:		https://github.com/mate-desktop/mate-utils
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd45-xml
+BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.50.0
 BuildRequires:	gtk+3-devel >= 3.22
 BuildRequires:	gtk-doc >= 1.10
@@ -128,7 +129,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libmatedict.la
 
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{es_ES,frp,jv,ku_IQ,pms}
-%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/help/{es_ES,frp,jv,kab,ku_IQ}
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/help/{es_ES,frp,jv,ku_IQ}
 
 # mate-utils gettext domain, mate-{dictionary,disk-usage,analyzer,search-tool,system-log} mate dirs
 %find_lang %{name} --with-mate --all-name
