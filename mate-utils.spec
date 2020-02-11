@@ -1,22 +1,21 @@
 Summary:	MATE utility programs
 Summary(pl.UTF-8):	Programy użytkowe dla środowiska MATE
 Name:		mate-utils
-Version:	1.22.2
+Version:	1.24.0
 Release:	1
 License:	LGPL v2+ (libmatedict), GPL v2+ (programs), FDL (documentation)
 Group:		X11/Applications/Multimedia
-Source0:	http://pub.mate-desktop.org/releases/1.22/%{name}-%{version}.tar.xz
-# Source0-md5:	d349801ca30d41fe1bf659d88556aac4
+Source0:	http://pub.mate-desktop.org/releases/1.24/%{name}-%{version}.tar.xz
+# Source0-md5:	e3c9c1f896973b55d3081b86f11ec68c
 URL:		https://github.com/mate-desktop/mate-utils
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd45-xml
-BuildRequires:	gettext-tools
+BuildRequires:	gettext-tools >= 0.19.8
 BuildRequires:	glib2-devel >= 1:2.50.0
 BuildRequires:	gtk+3-devel >= 3.22
 BuildRequires:	gtk-doc >= 1.10
 BuildRequires:	inkscape
-BuildRequires:	intltool >= 0.50.1
 BuildRequires:	libcanberra-gtk3-devel >= 0.4
 BuildRequires:	libgtop-devel >= 1:2.12.0
 BuildRequires:	libtool >= 1:1.4.3
@@ -24,6 +23,7 @@ BuildRequires:	mate-common
 BuildRequires:	mate-panel-devel >= 1.17.0
 BuildRequires:	rpmbuild(find_lang) >= 1.36
 BuildRequires:	tar >= 1:1.22
+BuildRequires:	udisks2-devel >= 1.90.0
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xz
@@ -39,6 +39,7 @@ Requires:	libcanberra-gtk3 >= 0.4
 Requires:	libgtop >= 1:2.12.0
 Requires:	libmatedict = %{version}-%{release}
 Requires:	mate-panel >= 1.17.0
+Requires:	udisks2-libs >= 1.90.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # use the same libexecdir as mate-panel
@@ -162,6 +163,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/mate-dictionary
+%attr(755,root,root) %{_bindir}/mate-disk-image-mounter
 %attr(755,root,root) %{_bindir}/mate-disk-usage-analyzer
 %attr(755,root,root) %{_bindir}/mate-search-tool
 %attr(755,root,root) %{_bindir}/mate-system-log
@@ -176,10 +178,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/glib-2.0/schemas/org.mate.system-log.gschema.xml
 %{_datadir}/mate-dict
 %{_datadir}/mate-dictionary
-%{_datadir}/mate-disk-usage-analyzer
 %{_datadir}/mate-panel/applets/org.mate.DictionaryApplet.mate-panel-applet
-%{_datadir}/mate-utils
 %{_desktopdir}/mate-dictionary.desktop
+%{_desktopdir}/mate-disk-image-mounter.desktop
 %{_desktopdir}/mate-disk-usage-analyzer.desktop
 %{_desktopdir}/mate-search-tool.desktop
 %{_desktopdir}/mate-system-log.desktop
@@ -213,7 +214,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/mate-screenshot
 %{_datadir}/metainfo/mate-screenshot.appdata.xml
 %{_datadir}/glib-2.0/schemas/org.mate.screenshot.gschema.xml
-%{_datadir}/mate-screenshot
 %{_desktopdir}/mate-screenshot.desktop
 %{_mandir}/man1/mate-panel-screenshot.1*
 %{_mandir}/man1/mate-screenshot.1*
