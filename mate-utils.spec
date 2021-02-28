@@ -85,9 +85,7 @@ Pliki nagłówkowe biblioteki libmatedict.
 Summary:	API documentation for libmatedict library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki libmatedict
 Group:		Documentation
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description -n libmatedict-apidocs
 API documentation for libmatedict library.
