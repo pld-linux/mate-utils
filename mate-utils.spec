@@ -22,6 +22,7 @@ BuildRequires:	libtool >= 1:1.4.3
 BuildRequires:	mate-common
 BuildRequires:	mate-panel-devel >= 1.17.0
 BuildRequires:	rpmbuild(find_lang) >= 1.36
+BuildRequires:	rpmbuild(macros) >= 1.596
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	udisks2-devel >= 1.90.0
 BuildRequires:	xorg-lib-libICE-devel >= 1.0.0
