@@ -2,7 +2,7 @@ Summary:	MATE utility programs
 Summary(pl.UTF-8):	Programy użytkowe dla środowiska MATE
 Name:		mate-utils
 Version:	1.26.1
-Release:	1
+Release:	2
 License:	LGPL v2+ (libmatedict), GPL v2+ (programs), FDL (documentation)
 Group:		X11/Applications/Multimedia
 Source0:	https://pub.mate-desktop.org/releases/1.26/%{name}-%{version}.tar.xz
@@ -132,7 +132,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libmatedict.la
 
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{es_ES,frp,ie,jv,ku_IQ,pms}
-%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/help/{es_ES,frp,ie,jv,ku_IQ}
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/help/{es_ES,frp,ie,jv,ku_IQ,zh-Hans}
 
 # mate-utils gettext domain, mate-{dictionary,disk-usage,analyzer,search-tool,system-log} mate dirs
 %find_lang %{name} --with-mate --all-name
