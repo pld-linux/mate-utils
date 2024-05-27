@@ -1,12 +1,12 @@
 Summary:	MATE utility programs
 Summary(pl.UTF-8):	Programy użytkowe dla środowiska MATE
 Name:		mate-utils
-Version:	1.26.1
-Release:	2
+Version:	1.28.0
+Release:	1
 License:	LGPL v2+ (libmatedict), GPL v2+ (programs), FDL (documentation)
 Group:		X11/Applications/Multimedia
-Source0:	https://pub.mate-desktop.org/releases/1.26/%{name}-%{version}.tar.xz
-# Source0-md5:	1ce3bb086f21a8beb5c1897bc4594bd7
+Source0:	https://pub.mate-desktop.org/releases/1.28/%{name}-%{version}.tar.xz
+# Source0-md5:	b5820b69d1c292712a7a45a933d9c2da
 URL:		https://github.com/mate-desktop/mate-utils
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.11
@@ -15,17 +15,24 @@ BuildRequires:	gettext-tools >= 0.19.8
 BuildRequires:	glib2-devel >= 1:2.50.0
 BuildRequires:	gtk+3-devel >= 3.22
 BuildRequires:	gtk-doc >= 1.10
+# wayland not finished yet (there are configure checks, but used minimal versions are not defined)
+#BuildRequires:	gtk-layer-shell-devel
 BuildRequires:	inkscape
 BuildRequires:	libcanberra-gtk3-devel >= 0.4
 BuildRequires:	libgtop-devel >= 1:2.12.0
+# rsvg-convert
+BuildRequires:	librsvg
 BuildRequires:	libtool >= 1:1.4.3
 BuildRequires:	mate-common
+BuildRequires:	mate-desktop-devel >= 1.27.1
 BuildRequires:	mate-panel-devel >= 1.17.0
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(find_lang) >= 1.36
 BuildRequires:	rpmbuild(macros) >= 1.596
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	udisks2-devel >= 1.90.0
+# wayland-client
+#BuildRequires:	wayland-devel
 BuildRequires:	xorg-lib-libICE-devel >= 1.0.0
 BuildRequires:	xorg-lib-libSM-devel >= 1.0.0
 BuildRequires:	xorg-lib-libX11-devel
@@ -42,6 +49,7 @@ Requires:	hicolor-icon-theme
 Requires:	libcanberra-gtk3 >= 0.4
 Requires:	libgtop >= 1:2.12.0
 Requires:	libmatedict = %{version}-%{release}
+Requires:	mate-desktop >= 1.27.1
 Requires:	mate-panel >= 1.17.0
 Requires:	udisks2-libs >= 1.90.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
